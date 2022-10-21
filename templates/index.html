@@ -19,8 +19,7 @@
 
         <div class="weather-info">
             <div class="cards">
-                {% for weather in weather_data %}
-                    <div class="card night">
+                <div class="card night">
                     <div class="delete-wrapper">
                         <form action="/delete" method="POST">
                             <input type="hidden" name="id">
@@ -30,9 +29,8 @@
                     <div class="degrees"><span>{{ weather.temperature }}<span class="celsius"> °C</span></span></div>
                     <div class="state">{{ weather.description }}</div>
                     <div class="empty"></div>
-                    <div class="city">{{ weather.city }}</div>
-                {% endfor %}
-            </div>
+                    <div class="city">{{ weather.city }}</div> -->
+                </div>
             </div>
         </div>
     </body>

@@ -23,14 +23,12 @@ def index():
     cities = City.query.all()
     weather_data = []
 
-    url = "api.openweathermap.org/data/2.5/weather?q={}&APPID=s347374cba0f7fbd2206babf350c6a3c7&units=metric"
-
+    url = "http://api.openweathermap.org/data/2.5/weather?q={}&APPID={API_KEY}&units=metric"
     for city in cities: 
-        # r = requests.get(f"{BASE_URL}q={}&APPID={API_KEY}&units=metric")
-        data = requests.get(url.format(city.name)).json()
+        data = requests.get(url.format(city)).json()
         print(data)
         weather = {
-            "city": city.name,
+            "city": city,
             "temperature": data["main"]["temp"],
             "description": data["weather"][0]["description"],
             "icon": data["weather"][0]["icon"]
@@ -38,7 +36,6 @@ def index():
 
         weather_data.append(weather)
     return render_template("index.html",weather_data=weather_data)
-    # return render_template("index.html")
 
 if __name__ == '__main__':
     app.run()

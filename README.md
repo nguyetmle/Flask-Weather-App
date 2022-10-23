@@ -5,9 +5,10 @@
 
 ## Technical stack
 ### Frontend
+* Programming language(s): HTML/CSS
 * Framework: Bootstrap
 ### Backend
-* Programming language: Python
+* Programming language(s): Python
 * App framework: Flask
 * Database: SQLAlchemy
 

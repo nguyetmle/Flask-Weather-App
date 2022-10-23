@@ -11,7 +11,7 @@
     <body>
         <h1>GET<br>WEATHER<br>MAP</h1>
         <div class="form">
-            <form action="/add_city" class="search-bar" method="POST" autocomplete="off">
+            <form class="search-bar" method="POST" autocomplete="off">
                 <input type="text" placeholder="Search City" name="city">
                 <button type="submit" class="btn btn-outline-dark"><img src="{{ url_for('static', filename='img/search.png') }}"></button>
             </form>
@@ -19,18 +19,20 @@
 
         <div class="weather-info">
             <div class="cards">
-                <div class="card night">
-                    <div class="delete-wrapper">
-                        <form action="/delete" method="POST">
-                            <input type="hidden" name="id">
-                            <button class="delete-button" type="submit">&#10006;</button>
-                        </form>
+                {% for weather in weather_data %}
+                    <div class="card night">
+                        <div class="delete-wrapper">
+                            <form action="/delete/{{ weather.city }}" method="POST">
+                                <input type="hidden" name="city" value="{{ weather.city }}">
+                                <button class="delete-button" type="submit">&#10006;</button>
+                            </form>
+                        </div>
+                        <div class="degrees"><span>{{ weather.temperature }}<span class="celsius"> °C</span></span></div>
+                        <div class="state">{{ weather.description }}</div>
+                        <div class="empty"></div>
+                        <div class="city">{{ weather.city }}</div> -->
                     </div>
-                    <div class="degrees"><span>{{ weather.temperature }}<span class="celsius"> °C</span></span></div>
-                    <div class="state">{{ weather.description }}</div>
-                    <div class="empty"></div>
-                    <div class="city">{{ weather.city }}</div> -->
-                </div>
+                {% endfor %}
             </div>
         </div>
     </body>
@@ -38,4 +40,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
-</html>
+</html> 
+
+

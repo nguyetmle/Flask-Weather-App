@@ -11,4 +11,4 @@
 * Programming language(s): Python
 * App framework: Flask
 * Database: SQLAlchemy
-
+* Deployment: Heroku

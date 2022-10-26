@@ -26,6 +26,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
 }
 
 .search-bar {
@@ -40,6 +41,14 @@ h1 {
     padding: 10px 20px;
 }
 
+.search {
+    display: inline-block;
+}
+
+.notification {
+    display: inline-block;
+    position: relative;
+}
 .search-bar input {
     background: transparent;
     flex: 1;
@@ -69,45 +78,15 @@ h1 {
     cursor: pointer;
 }
 
-/* .weather-container {
-    background: url(img/night.jpg);
-    background-size: cover;
-    overflow: hidden;
-    width: 100%;
-    min-height: 100vh;
-}
-
-.container {
-    position: relative;
-    padding: 20px 70px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.weather-card {
-    display: flex;
-    flex-direction: column;
-    background: rgba(210, 199, 214, 0.6);
-    padding: 20px;
-    border-radius: 20px;
-}
-
-.weather-card .info {
-    display: flex;
-    justify-content: space-between;
-}  */
-
-
 .weather-info {
-	min-height: 100vh;
+    width: 100%;
+	min-height: fit-content(30em);
 	/* background: linear-gradient(#836273, #373252); */
     /* background: rgb(238,174,202); */
     background: linear-gradient(to bottom, rgba(238,174,202,1), rgba(148,187,233,1));
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	padding: 0;
+	padding: 20;
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 }
@@ -120,7 +99,9 @@ h1 {
 	padding-left: 20%;
 	padding-right: 20%;
     padding-top: 10%;
-	margin-bottom: 2vw;
+    padding-bottom: 10%;
+    border-bottom: 20;
+	margin-bottom: 0;
 	justify-content: center;
 }
 .card {
@@ -138,8 +119,8 @@ h1 {
 	background-image: url("img/day.jpg");
 }
 
-.evening-morning {
-	background-image: url("img/evening-morning.jpg");
+.afternoon {
+	background-image: url("img/afternoon.jpg");
 }
 
 .night {
@@ -195,6 +176,7 @@ h1 {
 	outline: none;
 }
 
+
 ::-webkit-scrollbar {
     width: 0.5vw;
     background:-webkit-linear-gradient(0, blue 50%, white 100%);
@@ -211,3 +193,4 @@ h1 {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+

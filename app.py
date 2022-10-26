@@ -1,3 +1,4 @@
+import datetime
 import os
 import requests
 from flask import Flask, render_template, request, url_for, flash, redirect
@@ -21,11 +22,16 @@ class City(db.Model):
     def __repr__(self):
         return str(self.name)
 
-#helper function to get weather dat
+#helper function to get weather data
 def get_weather(city):
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={API_KEY}&units=metric'
     data = requests.get(url).json()
     return data
+
+#helper function to get time
+def get_date(timezone):
+    tz = datetime.timezone(datetime.timedelta(seconds=int(timezone)))
+    return datetime.datetime.now(tz=tz).time().hour
 
 @app.route('/', methods=['POST'])
 def index_post():
@@ -66,7 +72,7 @@ def index_get():
             "city": city.name,
             "temperature": data["main"]["temp"],
             "description": data["weather"][0]["description"],
-            "icon": data["weather"][0]["icon"]
+            "time": get_date(data['timezone'])
         }
 
         weather_data.append(weather)

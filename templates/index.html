@@ -11,16 +11,33 @@
     <body>
         <h1>GET<br>WEATHER<br>MAP</h1>
         <div class="form">
-            <form class="search-bar" method="POST" autocomplete="off">
-                <input type="text" placeholder="Search City" name="city">
-                <button type="submit" class="btn btn-outline-dark"><img src="{{ url_for('static', filename='img/search.png') }}"></button>
-            </form>
+            <div class="search">
+                <form class="search-bar" method="POST" autocomplete="off">
+                    <input type="text" placeholder="Search City" name="city">
+                    <button type="submit" class="btn btn-outline-dark"><img src="{{ url_for('static', filename='img/search.png') }}"></button>
+                </form>
+            </div>
+            <!-- {% with messages=get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="notification">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} -->
         </div>
 
         <div class="weather-info">
             <div class="cards">
                 {% for weather in weather_data %}
-                    <div class="card night">
+                    <div class="
+                        {% if 6 <= weather['time'] <= 12 %}
+                            card day
+                        {% elif 13 <= weather['time'] <= 19 %}
+                            card afternoon
+                        {% else %}
+                            card night
+                        {% endif %}
+                    ">
                         <div class="delete-wrapper">
                             <form action="/delete/{{ weather.city }}" method="POST">
                                 <input type="hidden" name="city" value="{{ weather.city }}">
